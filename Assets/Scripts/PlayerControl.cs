@@ -23,17 +23,13 @@ public class PlayerControl : MonoBehaviour
     public bool isFinished = false;
     public int unsuccessingNumb = 0;
     private float swayVal = 0.004f;
-    private float playerSpeed = 0.015f;
+    private float playerSpeed = 0.018f;
     public bool countControl = false;
     public Text failureText ;
     public Text timer;
     private float curTime = 0f;
     private float startingTime =30f;
     public Text gameOver;
-
-    
-
-
 
     void Start()
     {
