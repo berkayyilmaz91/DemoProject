@@ -163,6 +163,7 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.tag == "rotator")
         {
             anim.SetBool("flatFall", true);
+            countControl = true;
             transform.position = reSpawnPoint.position;
             unsuccessingNumb++;
         }      
