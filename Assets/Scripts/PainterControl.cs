@@ -11,12 +11,18 @@ public class PainterControl : MonoBehaviour
     public int colorIndex;
     public float zNormalization = 0.25f, xInfLimit = -6.85f, xSupLimit = 6.85f, yInfLimit = 7f, ySupLimit = 0.25f;
     public float brushSizeFactory;
+    public GameObject Painter;
+    private Animator anim;
 
+    private void Start()
+    {
+        anim = Painter.GetComponent<Animator>();
+    }
     private void Update()
     {
         colorIndex = ColorChooser.colorIndex;
         brushSizeFactory = ScrollBar.brushFactory*0.15f;
-
+     
     }
 
     private void OnMouseDown()
@@ -34,6 +40,7 @@ public class PainterControl : MonoBehaviour
         Vector3 curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenSpace)/* + offset*/;
         tail[colorIndex].transform.position = new Vector3(curPosition.x, curPosition.y, curPosition.z - zNormalization);
+        anim.SetBool("painter",true);
 
         if (tail[colorIndex].transform.position.x <= xInfLimit)
         {
@@ -53,6 +60,10 @@ public class PainterControl : MonoBehaviour
             tail[colorIndex].transform.position = new Vector3(tail[colorIndex].transform.position.x, ySupLimit, tail[colorIndex].transform.position.z);
         }
 
+    }
+    private void OnMouseUp()
+    {
+        anim.SetBool("painter", false);
     }
 
 }
