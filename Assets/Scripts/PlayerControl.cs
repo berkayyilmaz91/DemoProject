@@ -47,8 +47,12 @@ public class PlayerControl : MonoBehaviour
         Jump();
         Move();
         ErrorCounter();
-        curTime -= Time.deltaTime;
-        timer.text = curTime.ToString("0");
+        if (!isFinished)
+        {
+            curTime -= Time.deltaTime;
+            timer.text = curTime.ToString("0");
+        }
+       
         if (curTime <= 0)
         {
             StartCoroutine(Wait()) ;
