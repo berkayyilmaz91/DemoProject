@@ -1,2 +1,2 @@
-# DemoProject
+# ExampleProject
 
